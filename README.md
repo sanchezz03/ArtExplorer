@@ -1,12 +1,12 @@
 ## ArtExplorer Project
 
-## Overview
+### Overview
 ### ArtExplorer is a .NET-based application structured into three main layers:
 - ArtExplorer.API – Web API for handling HTTP requests.
 - ArtExplorer.BLL – Business Logic Layer, processing data and applying business rules.
 - ArtExplorer.DAL – Data Access Layer, handling database interactions.
 
-## Prerequisites
+### Prerequisites
 
 ### Before running the project locally, ensure you have the following installed:
 - .NET SDK
