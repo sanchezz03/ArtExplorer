@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtExplorer.API", "ArtExplorer.API\ArtExplorer.API.csproj", "{F13558F8-9E5D-4DCF-AD33-8D20D183F4FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtExplorer.BLL", "ArtExplorer.BLL\ArtExplorer.BLL.csproj", "{3196B2EF-7D5A-42F5-9DC6-867841596A8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtExplorer.DAL", "ArtExplorer.DAL\ArtExplorer.DAL.csproj", "{828ADE6B-BCED-4A65-A063-B72CABC49B4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F13558F8-9E5D-4DCF-AD33-8D20D183F4FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F13558F8-9E5D-4DCF-AD33-8D20D183F4FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F13558F8-9E5D-4DCF-AD33-8D20D183F4FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F13558F8-9E5D-4DCF-AD33-8D20D183F4FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3196B2EF-7D5A-42F5-9DC6-867841596A8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3196B2EF-7D5A-42F5-9DC6-867841596A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3196B2EF-7D5A-42F5-9DC6-867841596A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3196B2EF-7D5A-42F5-9DC6-867841596A8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{828ADE6B-BCED-4A65-A063-B72CABC49B4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{828ADE6B-BCED-4A65-A063-B72CABC49B4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{828ADE6B-BCED-4A65-A063-B72CABC49B4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{828ADE6B-BCED-4A65-A063-B72CABC49B4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
