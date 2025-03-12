@@ -16,11 +16,24 @@
 
 ### Getting Started
 
+#### Docker run
+
+1. Make sure you have Docker and Docker Compose installed on your system.
+2. The ports 5432, 5275, 7257 should not be used by any other applications for the setup to work properly
+3. Clone the Repository
+4. Navigate to the root directory of the project.
+5. Run the following command to build and run the Docker containers:
+ ````bash
+docker-compose up --build
+````
+6. Access the API at http://localhost:5275/swagger
+
+#### Local run
 1. Clone the Repository
 2. Update Connection String
-   
+
 3.  Modify the appsettings.json file in ArtExplorer.API:
- ````bash
+ ````json
 "ConnectionStrings": {
   "DefaultConnection": "Server=YOUR_SERVER;Database=ArtExplorer;"
 }
