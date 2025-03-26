@@ -15,7 +15,7 @@ public class AppDbContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlServer("Server=YOUR_CONNECTION_STRING;Database=ArtExplorer;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseNpgsql("Host=postgres;Database=ArtExplorer;Username=admin;Password=YourStrong!Passw0rd;Trusted_Connection=True;TrustServerCertificate=True;");
         }
     }
 

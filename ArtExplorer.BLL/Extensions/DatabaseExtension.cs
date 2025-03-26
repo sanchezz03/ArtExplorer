@@ -17,7 +17,7 @@ public static class DataBaseExtension
             throw new Exception("Not found DB configuration in config file");
         }
 
-        services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+        services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 
         return services;
     }
