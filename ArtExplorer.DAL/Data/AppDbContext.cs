@@ -1,10 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ArtExplorer.DAL.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace ArtExplorer.DAL.Data;
 
-public class AppDbContext : DbContext
+public class AppDbContext : IdentityDbContext<User>
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    public DbSet<User> Users { get; set; }
+    public AppDbContext() { }
+    public AppDbContext(DbContextOptions options) : base(options)
     {
 
     }
@@ -15,13 +19,13 @@ public class AppDbContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseNpgsql("Host=postgres;Database=ArtExplorer;Username=admin;Password=YourStrong!Passw0rd;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseNpgsql("Host=postgres;Database=ArtExplorer;Username=admin;Password=YourStrong!Passw0rd;TrustServerCertificate=True;");
         }
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-
+        base.OnModelCreating(modelBuilder);
     }
 
     #endregion
