@@ -2,6 +2,7 @@
 using ArtExplorer.DAL.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -14,7 +15,7 @@ public static class IdentityServiceExtension
 
     public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddIdentityCore<User>(opt =>
+        services.AddIdentity<User, IdentityRole>(opt =>
         {
             opt.Password.RequireNonAlphanumeric = false;
             opt.User.RequireUniqueEmail = true;
