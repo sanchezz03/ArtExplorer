@@ -34,14 +34,14 @@ public class AccountController : ControllerBase
 
         if (user == null)
         {
-            return Unauthorized("Invalid username!");
+            return Unauthorized("Invalid credentials.");
         }
 
         var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
 
         if (!result.Succeeded)
         {
-            return Unauthorized("Username not found and/or password incorrect!");
+            return Unauthorized("Invalid credentials.");
         }
 
         return Ok(new UserDto()
