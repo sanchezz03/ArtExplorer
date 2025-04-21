@@ -1,5 +1,8 @@
 using ArtExplorer.API.Extensions;
 using ArtExplorer.BLL.Extensions;
+using ArtExplorer.API.Extensions;
+using ArtExplorer.DAL.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +17,8 @@ builder.Services
 
 var app = builder.Build();
 
+ApplyMigrations(app);
+
 app.UseSwagger();
 app.UseSwaggerUI();
 
@@ -26,3 +31,12 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+static void ApplyMigrations(WebApplication app)
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        scope.ServiceProvider.GetService<AppDbContext>()
+            .Database.Migrate();
+    }
+}

@@ -1,7 +1,25 @@
 services:
-  postgres:
-    image: postgres:17.4-alpine3.21
-    container_name: artexplorer_db
+  artexplorer.api:
+    image: ${DOCKER_REGISTRY-}artexplorerapi
+    container_name: artexplorer.api
+    build:
+      context: .
+      dockerfile: ArtExplorer.API/Dockerfile
+    depends_on:
+     - artexplorer.database
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=artexplorer.database;Database=ArtExplorer;Username=admin;Password=YourStrong!Passw0rd;TrustServerCertificate=True;
+    ports:
+      - "5275:5275"
+      - "7257:7257"
+    restart: always
+    networks:
+      - artexplorer-db-network
+
+  artexplorer.database:
+    image: postgres:latest
+    container_name: artexplorer.database
     environment:
       POSTGRES_DB: ArtExplorer
       POSTGRES_USER: admin
@@ -13,30 +31,17 @@ services:
       timeout: 5s
       retries: 5
     ports:
-      - "5432:5432"
+      - "5500:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
-  api:
-    build: .
-    container_name: artexplorer_api
-    depends_on:
-      postgres:
-        condition: service_healthy
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Host=postgres;Database=ArtExplorer;Username=admin;Password=YourStrong!Passw0rd;Trusted_Connection=True;TrustServerCertificate=True;
-    ports:
-      - "5275:5275"
-      - "7257:7257"
-    restart: always
     networks:
-      - artexplorer_network
+      - artexplorer-db-network
 
 volumes:
   postgres_data:
     driver: local
 
 networks:
-  artexplorer_network:
-    driver: bridge
+  artexplorer-db-network:
+    external: false
+    name: artexplorer-db-network
