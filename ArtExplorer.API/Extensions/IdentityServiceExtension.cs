@@ -15,13 +15,14 @@ public static class IdentityServiceExtension
 
     public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddIdentity<User, IdentityRole>(opt =>
+        services.AddIdentityCore<User>(opt =>
         {
             opt.Password.RequireNonAlphanumeric = false;
             opt.User.RequireUniqueEmail = true;
         })
         .AddRoles<IdentityRole>()
-        .AddEntityFrameworkStores<AppDbContext>();
+        .AddEntityFrameworkStores<AppDbContext>()
+        .AddSignInManager();
 
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(opt =>
