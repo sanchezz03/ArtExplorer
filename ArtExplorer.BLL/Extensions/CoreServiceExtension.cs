@@ -9,7 +9,8 @@ public static class CustomeServiceExtension
     public static IServiceCollection AddCoreServices(this IServiceCollection services)
     {
         return services
-            .AddScoped<ITokenService, TokenService>();
+            .AddScoped<ITokenService, TokenService>()
+            .AddScoped<IMetMuseumService, MetMuseumService>();
     }
 }
 
