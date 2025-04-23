@@ -11,7 +11,8 @@ builder.Services
     .AddIdentityServices(builder.Configuration)
     .AddEndpointsApiExplorer()
     .AddSwaggerGen()
-    .AddHttpClient();
+    .AddHttpClient()
+    .AddCORS();
 
 var app = builder.Build();
 
