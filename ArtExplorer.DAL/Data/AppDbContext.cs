@@ -19,7 +19,7 @@ public class AppDbContext : IdentityDbContext<User>
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseNpgsql("Host=postgres;Database=ArtExplorer;Username=admin;Password=YourStrong!Passw0rd;TrustServerCertificate=True;");
+            optionsBuilder.UseNpgsql("Host=artexplorer.database;Port=5432;Database=ArtExplorer;Username=admin;Password=YourStrong!Passw0rd;");
         }
     }
 

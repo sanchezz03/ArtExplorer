@@ -10,9 +10,12 @@ builder.Services
     .AddCoreServices()
     .AddIdentityServices(builder.Configuration)
     .AddEndpointsApiExplorer()
-    .AddSwaggerGen();
+    .AddSwaggerGen()
+    .AddHttpClient();
 
 var app = builder.Build();
+
+app.ApplyMigrations();
 
 app.UseSwagger();
 app.UseSwaggerUI();
