@@ -10,7 +10,8 @@ public static class CustomeServiceExtension
     {
         return services
             .AddScoped<ITokenService, TokenService>()
-            .AddScoped<IMetMuseumService, MetMuseumService>();
+            .AddScoped<IMetMuseumService, MetMuseumService>()
+            .AddScoped<IFavoriteService, FavoriteService>();
     }
 }
 
