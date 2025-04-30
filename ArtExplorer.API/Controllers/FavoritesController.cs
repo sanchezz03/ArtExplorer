@@ -34,15 +34,6 @@ public class FavoritesController : ControllerBase
         return Ok(favorites);
     }
 
-    [HttpPost("Update/{newArtworkId}")]
-    public async Task<IActionResult> Update([FromBody] FavoriteDto favoriteDto, int newArtworkId)
-    {
-        var userId = favoriteDto.UserId;
-        var artworkId = favoriteDto.ArtworkId;
-        var result = _favoriteService.UpdateFavorite(userId, artworkId, newArtworkId);
-        return Ok(new { message = result });
-    }
-
     [HttpDelete("Delete")]
     public async Task<IActionResult> Delete([FromBody] FavoriteDto favoriteDto)
     {
