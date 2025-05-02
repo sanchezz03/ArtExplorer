@@ -26,7 +26,7 @@ public class FavoriteService : IFavoriteService
 
         if (alreadyFavorited)
         {
-            return "Artwork is already in favorites.";
+            return $"User {userID.ToString()} already has artwork {artworkID.ToString()} added to favourite.";
         }
 
         var favorite = new Favorite
@@ -38,7 +38,7 @@ public class FavoriteService : IFavoriteService
         _context.Favorites.Add(favorite);
         _context.SaveChanges();
 
-        return "Artwork added to favorites successfully.";
+        return $"Artwork {artworkID.ToString()} was added to user {userID.ToString()} successfully.";
     }
 
     public List<FavoriteDto> ReadFavorite(string userID)

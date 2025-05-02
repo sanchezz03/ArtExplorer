@@ -18,12 +18,17 @@ public class FavoritesController : ControllerBase
     }
 
     [HttpPost("Create")]
-    public async Task<IActionResult> Create([FromBody] FavoriteDto favoriteDto)
+    public async Task<IActionResult> Create([FromBody] List<FavoriteDto> favoriteDto)
     {
-        var userId = favoriteDto.UserId;
-        var artworkId = favoriteDto.ArtworkId;
+        List<string> result = new List<string>();
+        foreach (var item in favoriteDto)
+        {
+            var userId = item.UserId;
+            var artworkId = item.ArtworkId;
 
-        var result = _favoriteService.CreateFavorite(userId, artworkId);
+            result.Add(_favoriteService.CreateFavorite(userId, artworkId));
+        }
+
         return Ok(new { message = result });
     }
 
