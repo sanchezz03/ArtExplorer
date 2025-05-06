@@ -26,7 +26,7 @@ public class FavoriteService : IFavoriteService
 
         if (alreadyFavorited)
         {
-            return "Artwork is already in favorites.";
+            return $"User {userID.ToString()} already has artwork {artworkID.ToString()} added to favourite.";
         }
 
         var favorite = new Favorite
@@ -38,7 +38,7 @@ public class FavoriteService : IFavoriteService
         _context.Favorites.Add(favorite);
         _context.SaveChanges();
 
-        return "Artwork added to favorites successfully.";
+        return $"Artwork {artworkID.ToString()} was added to user {userID.ToString()} successfully.";
     }
 
     public List<FavoriteDto> ReadFavorite(string userID)
@@ -53,30 +53,6 @@ public class FavoriteService : IFavoriteService
             .ToList();
 
         return favorites;
-    }
-
-    public string UpdateFavorite(string userID, int artworkID, int newArtworkID)
-    {
-        var favorite = _context.Favorites.FirstOrDefault(f => f.UserId == userID && f.ArtworkId == artworkID);
-
-        if (favorite == null)
-        {
-            return "Favorite not found.";
-        }
-
-        _context.Favorites.Remove(favorite);
-
-        var newFavorite = new Favorite
-        {
-            UserId = userID,
-            ArtworkId = newArtworkID
-        };
-
-        _context.Favorites.Add(newFavorite);
-
-        _context.SaveChanges();
-
-        return "Favorite updated successfully.";
     }
 
     public string DeleteFavorite(string userID, int artworkID)

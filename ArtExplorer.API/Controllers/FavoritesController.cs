@@ -1,0 +1,52 @@
+﻿using ArtExplorer.BLL.Dtos;
+using ArtExplorer.BLL.Services;
+using ArtExplorer.BLL.Services.Interfaces;
+using ArtExplorer.DAL.Entities;
+using Microsoft.AspNetCore.Mvc;
+
+namespace ArtExplorer.API.Controllers;
+
+[Route("api/favorites")]
+[ApiController]
+public class FavoritesController : ControllerBase
+{
+    private readonly IFavoriteService _favoriteService;
+
+    public FavoritesController(IFavoriteService favoriteService)
+    {
+        _favoriteService = favoriteService;
+    }
+
+    [HttpPost("Create")]
+    public async Task<IActionResult> Create([FromBody] List<FavoriteDto> favoriteDto)
+    {
+        List<string> result = new List<string>();
+        foreach (var item in favoriteDto)
+        {
+            var userId = item.UserId;
+            var artworkId = item.ArtworkId;
+
+            result.Add(_favoriteService.CreateFavorite(userId, artworkId));
+        }
+
+        return Ok(new { message = result });
+    }
+
+    [HttpGet("Read/{userId}")]
+    public async Task<IActionResult> Read(string userId)
+    {
+        var favorites = _favoriteService.ReadFavorite(userId);
+        return Ok(favorites);
+    }
+
+    [HttpDelete("Delete")]
+    public async Task<IActionResult> Delete([FromBody] FavoriteDto favoriteDto)
+    {
+        var userId = favoriteDto.UserId;
+        var artworkId = favoriteDto.ArtworkId;
+
+        var result = _favoriteService.DeleteFavorite(userId, artworkId);
+        return Ok(new { message = result });
+    }
+}
+

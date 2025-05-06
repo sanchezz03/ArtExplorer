@@ -12,6 +12,5 @@ public interface IFavoriteService
 {
     string CreateFavorite(string userID, int artworkID);
     List<FavoriteDto> ReadFavorite(string userID);
-    string UpdateFavorite(string userID, int artworkID, int newArtworkID);
     string DeleteFavorite(string userID, int artworkID);
 }
